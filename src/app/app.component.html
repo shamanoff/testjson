@@ -1,3 +1,10 @@
-
-
-<mat-checkbox>Check me!</mat-checkbox>
+<mat-toolbar color="primary">
+  <span>Application Title</span>
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+  <span class="example-fill-remaining-space"></span>
+  <span>Right Aligned Text</span>
+</mat-toolbar>

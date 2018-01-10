@@ -10,7 +10,9 @@ import {MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatMen
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   exports: [
     MatButtonModule,
@@ -18,7 +20,9 @@ import {MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatMen
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatMenuModule,
+    MatIconModule
   ],
   declarations: []
 })
