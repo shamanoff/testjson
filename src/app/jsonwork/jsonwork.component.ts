@@ -27,6 +27,10 @@ export class JsonworkComponent implements OnInit {
     ).subscribe();
   }
 
+  editUser(id) {
+    console.log(id);
+  }
+
 }
 
 
