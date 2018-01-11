@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {User} from './user';
 import {FetchdataService} from '../fetchdata.service';
 import 'rxjs/add/operator/map';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -12,10 +12,15 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class JsonworkComponent implements OnInit {
   displayedColumns = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address'];
+
+  private onEditUser: User;
+  fname: string;
+  lname: string;
+
   private dataSource;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private _dataServ: FetchdataService) {
+  constructor(private _dataServ: FetchdataService, public _dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -28,9 +33,24 @@ export class JsonworkComponent implements OnInit {
   }
 
   editUser(id) {
-    console.log(id);
+    this.onEditUser = id;
+    console.log(this.onEditUser);
+    this._dialog.open(DialogDataExampleDialog, {
+      data: {
+        fName: id.first_name
+      }
+    });
   }
 
+
+}
+
+@Component({
+  selector: 'dialog-data-example-dialog',
+  templateUrl: 'dialog-data-example-dialog.html',
+})
+export class DialogDataExampleDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }
 
 

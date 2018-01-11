@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatIconModule, MatMenuModule, MatPaginator,
+  MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDialogModule,
+  MatIconModule, MatInputModule, MatMenuModule, MatPaginator,
   MatPaginatorIntl,
   MatPaginatorModule,
   MatTableModule,
@@ -23,6 +24,8 @@ import {
     MatChipsModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
+    MatInputModule
 
   ],
   exports: [
@@ -38,6 +41,8 @@ import {
     MatChipsModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
+    MatInputModule
   ],
   declarations: []
 })

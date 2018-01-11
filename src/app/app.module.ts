@@ -8,9 +8,9 @@ import {MaterialModule} from './material/material.module';
 import {HttpClientModule} from '@angular/common/http';
 import { MatComponent } from './matcomponents/matcomponents.component';
 import { HeaderComponent } from './header/header.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
-import { JsonworkComponent } from './jsonwork/jsonwork.component';
+import {DialogDataExampleDialog, JsonworkComponent} from './jsonwork/jsonwork.component';
 import {FetchdataService} from './fetchdata.service';
 const appRoutes: Routes = [
   {path: '', component: MatComponent},
@@ -22,12 +22,15 @@ const appRoutes: Routes = [
     AppComponent,
     MatComponent,
     HeaderComponent,
-    JsonworkComponent
+    JsonworkComponent,
+    DialogDataExampleDialog
   ],
+  entryComponents: [DialogDataExampleDialog],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     HttpClientModule
