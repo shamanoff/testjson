@@ -1,10 +1,16 @@
-<h1 mat-dialog-title>Favorite Animal</h1>
-<div mat-dialog-content>
-  My favorite animal is:
-  <ul>
-    <li>
-      {{data.fName}}
-    </li>
+<h1 mat-dialog-title >Edit User</h1>
+<mat-dialog-content>
 
-  </ul>
-</div>
+    <p>ID: {{data.id}}</p>
+    <h4>Full Name: {{data.fName}} {{data.lName}}</h4>
+
+    <p>Email: {{data.email}}</p>
+    <p>Gender: {{data.gender}}</p>
+    <p>IP: {{data.ip}}</p>
+
+</mat-dialog-content>>
+<mat-dialog-actions>
+  <button mat-button color="accent" >Edit</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="true">Close</button>
+</mat-dialog-actions>
