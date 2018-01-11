@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatIconModule, MatMenuModule, MatPaginator,
+  MatPaginatorIntl,
   MatPaginatorModule,
   MatTableModule,
   MatToolbarModule
@@ -21,7 +22,8 @@ import {
     MatButtonToggleModule,
     MatChipsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+
   ],
   exports: [
     MatButtonModule,
@@ -35,7 +37,7 @@ import {
     MatButtonToggleModule,
     MatChipsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   declarations: []
 })
