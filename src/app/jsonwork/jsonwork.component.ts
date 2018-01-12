@@ -35,7 +35,7 @@ export class JsonworkComponent implements OnInit {
   editUser(id) {
     this.onEditUser = id;
     console.log(this.onEditUser);
-    this._dialog.open(DialogDataExampleDialog, { width: '650px',
+    this._dialog.open(DialogDataExampleDialog, { width: '350px',
       data: {
         id: id.id,
         fName: id.first_name,
