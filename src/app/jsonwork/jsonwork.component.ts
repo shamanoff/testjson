@@ -25,8 +25,8 @@ export class JsonworkComponent implements OnInit {
 
   ngOnInit() {
     this._dataServ.fetchData().map(
-      (data: User[]) => {
-        this.dataSource = new MatTableDataSource(data);
+      (inputData: User[]) => {
+        this.dataSource = new MatTableDataSource<User>(inputData);
         this.dataSource.paginator = this.paginator;
       }
     ).subscribe();
