@@ -3,6 +3,7 @@ import {User} from './user';
 import {FetchdataService} from '../fetchdata.service';
 import 'rxjs/add/operator/map';
 import {MatPaginator, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -12,6 +13,7 @@ import {MatPaginator, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DA
 })
 export class JsonworkComponent implements OnInit {
   displayedColumns = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address'];
+  fileNameDialogRef: MatDialogRef<DialogDataExampleDialog>;
 
   private onEditUser: User;
   fname: string;
@@ -28,24 +30,31 @@ export class JsonworkComponent implements OnInit {
       (inputData: User[]) => {
         this.dataSource = new MatTableDataSource<User>(inputData);
         this.dataSource.paginator = this.paginator;
+        // console.log(this.dataSource.data[2]);
       }
     ).subscribe();
+
   }
 
-  editUser(id) {
-    this.onEditUser = id;
-    console.log(this.onEditUser);
+  editUser(user) {
+    console.log(user);
+    this.onEditUser = user;
+    // console.log(this.onEditUser);
     this._dialog.open(DialogDataExampleDialog, { width: '350px',
       data: {
-        id: id.id,
-        fName: id.first_name,
-        lName: id.last_name,
-        email: id.email,
-        gender: id.gender,
-        ip: id.ip_address
+        id: user.id,
+        fName: user.first_name,
+        lName: user.last_name,
+        email: user.email,
+        gender: user.gender,
+        ip: user.ip_address
       }
     });
+
+
   }
+
+
 
 
 }
@@ -56,6 +65,14 @@ export class JsonworkComponent implements OnInit {
 })
 export class DialogDataExampleDialog {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  saveUser(){
+    console.log(this.data)
+      /*  let index = _.findIndex(this.dataSource.data, function (o) {
+          return o.this.dataSource.data == this.onEditUser.id;
+        });
+        console.log(index);*/
+  }
 }
 
 
