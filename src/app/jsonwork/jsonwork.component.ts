@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {User} from './user';
 import {FetchdataService} from '../fetchdata.service';
 import 'rxjs/add/operator/map';
@@ -9,38 +9,37 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-jsonwork',
   templateUrl: './jsonwork.component.html',
-  styleUrls: ['./jsonwork.component.scss']
+  styleUrls: ['./jsonwork.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JsonworkComponent implements OnInit {
   displayedColumns = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address'];
-  fileNameDialogRef: MatDialogRef<DialogDataExampleDialog>;
-
   private onEditUser: User;
-  fname: string;
-  lname: string;
-
   private dataSource;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private _dataServ: FetchdataService, public _dialog: MatDialog) {
   }
 
   ngOnInit() {
+    this.dataServ();
+
+  }
+
+  dataServ() {
     this._dataServ.fetchData().map(
       (inputData: User[]) => {
         this.dataSource = new MatTableDataSource<User>(inputData);
         this.dataSource.paginator = this.paginator;
-        // console.log(this.dataSource.data[2]);
       }
     ).subscribe();
-
   }
 
   editUser(user) {
-    console.log(user);
     this.onEditUser = user;
-    // console.log(this.onEditUser);
-    this._dialog.open(DialogDataExampleDialog, { width: '350px',
+    const dialogRef = this._dialog.open(DialogDataExampleDialog, {
+      width: '350px',
       data: {
         id: user.id,
         fName: user.first_name,
@@ -51,12 +50,14 @@ export class JsonworkComponent implements OnInit {
       }
     });
 
-
+    dialogRef.afterClosed().subscribe(result => {
+      let newUser: User = result;
+      let resId = result.id;
+      let index = _.findIndex(this.dataSource.data, {id: resId});
+      this.dataSource.data[index] = Object.assign(newUser);
+      console.log(this.dataSource.data);
+    });
   }
-
-
-
-
 }
 
 @Component({
@@ -64,15 +65,15 @@ export class JsonworkComponent implements OnInit {
   templateUrl: 'dialog-data-example-dialog.html',
 })
 export class DialogDataExampleDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
-
-  saveUser(){
-    console.log(this.data)
-      /*  let index = _.findIndex(this.dataSource.data, function (o) {
-          return o.this.dataSource.data == this.onEditUser.id;
-        });
-        console.log(index);*/
+  constructor(public thisDialogRef: MatDialogRef<DialogDataExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: any) {
   }
+
+  onCloseConfirm() {
+    console.log('onCloseWork');
+    this.thisDialogRef.close(this.data);
+  }
+
+
 }
 
 
