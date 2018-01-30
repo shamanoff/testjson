@@ -24,7 +24,6 @@ export class JsonworkComponent implements OnInit {
 
   ngOnInit() {
     this.dataServ();
-
   }
 
   dataServ() {
