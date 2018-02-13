@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {User} from './user';
 import {FetchdataService} from '../fetchdata.service';
 import 'rxjs/add/operator/map';
@@ -50,12 +50,14 @@ export class JsonworkComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      let newUser: User = result;
-      let resId = result.id;
-      let index = _.findIndex(this.dataSource.data, {id: resId});
-      this.dataSource.data[index] = Object.assign(newUser);
+      const newUser: User = result;
+      const resId = result.id;
+      const index = _.findIndex(this.dataSource.data, {id: resId});
+      // this.dataSource.data[index] = Object.assign(newUser);
+      this.dataSource.data[index] = newUser;
       console.log(this.dataSource.data);
     });
+
   }
 }
 

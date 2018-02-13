@@ -12,6 +12,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {DialogDataExampleDialog, JsonworkComponent} from './jsonwork/jsonwork.component';
 import {FetchdataService} from './fetchdata.service';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 const appRoutes: Routes = [
   {path: '', component: MatComponent},
   {path: 'json', component: JsonworkComponent},
@@ -23,7 +25,9 @@ const appRoutes: Routes = [
     MatComponent,
     HeaderComponent,
     JsonworkComponent,
-    DialogDataExampleDialog
+    DialogDataExampleDialog,
+    SignupComponent,
+    LoginComponent
   ],
   entryComponents: [DialogDataExampleDialog],
   imports: [
@@ -33,7 +37,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
 
   ],
   providers: [FetchdataService],

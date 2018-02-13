@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './matcomponents.component.html',
   styleUrls: ['./matcomponents.component.scss']
 })
-export class MatComponent implements OnInit {
+export class MatComponent  {
+
 
   constructor() { }
 
-  ngOnInit() {
-  }
+
 
 }
