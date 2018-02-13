@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 const appRoutes: Routes = [
   {path: '', component: MatComponent},
   {path: 'json', component: JsonworkComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
