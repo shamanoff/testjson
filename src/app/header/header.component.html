@@ -1,18 +1,23 @@
 <mat-toolbar color="primary">
   <span id="title">Application Title</span>
+  <div id="open" fxFlex fxLayout fxHide.lt-lg="true">
+    <button mat-button routerLinkActive="active" [routerLink]="['']" [routerLinkActiveOptions]="{exact:true}">Home
+    </button>
+    <button mat-button routerLinkActive="active" [routerLink]="['/json']">Json Processing</button>
+    <span class="example-fill-remaining-space"></span>
 
-  <button mat-button  routerLinkActive="active"  [routerLink]="['']" [routerLinkActiveOptions]="{exact:true}">Home</button>
- <!-- <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>-->
-  <button mat-button routerLinkActive="active" [routerLink]="['/json']">Json Processing</button>
-  <span class="example-fill-remaining-space"></span>
-  <span>
+    <span>
       <button mat-button routerLinkActive="active" [routerLink]="['/signup']">Sign Up</button>
-  <button mat-button routerLinkActive="active" [routerLink]="['/login']">Login</button>
+      <button mat-button routerLinkActive="active" [routerLink]="['/login']">Login</button>
+    </span>
+  </div>
 
-  </span>
+  <div id="hide" fxFlex fxLayout fxHide.gt-md="true">
+    <span class="example-fill-remaining-space"></span>
+    <span>
 
+      <button mat-button (click)="onToggleSidenav()"><i class="material-icons">menu</i></button>
+    </span>
+  </div>
 
 </mat-toolbar>

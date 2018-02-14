@@ -15,6 +15,7 @@ import {FetchdataService} from './fetchdata.service';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 const appRoutes: Routes = [
   {path: '', component: MatComponent},
   {path: 'json', component: JsonworkComponent},
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     JsonworkComponent,
     DialogDataExampleDialog,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    SidenavListComponent
   ],
   entryComponents: [DialogDataExampleDialog],
   imports: [
