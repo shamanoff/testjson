@@ -20,11 +20,13 @@ import { CurrentTrainingComponent } from './training/current-training/current-tr
 import { NewTrainingComponent } from './training/new-training/new-training.component';
 import { PastTrainingComponent } from './training/past-training/past-training.component';
 import { TrainingComponent } from './training/training/training.component';
+import {StopTrainingComponent} from "./training/current-training/stop-training.component";
 const appRoutes: Routes = [
   {path: '', component: MatComponent},
   {path: 'json', component: JsonworkComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'training', component: TrainingComponent},
 ];
 
 @NgModule({
@@ -40,9 +42,9 @@ const appRoutes: Routes = [
     CurrentTrainingComponent,
     NewTrainingComponent,
     PastTrainingComponent,
-    TrainingComponent
+    TrainingComponent,
+    StopTrainingComponent
   ],
-  entryComponents: [DialogDataExampleDialog],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -55,6 +57,8 @@ const appRoutes: Routes = [
 
   ],
   providers: [FetchdataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogDataExampleDialog, StopTrainingComponent],
+
 })
 export class AppModule { }
