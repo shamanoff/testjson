@@ -41,24 +41,41 @@ export class JsonworkComponent implements OnInit {
       width: '350px',
       data: {
         id: user.id,
-        fName: user.first_name,
-        lName: user.last_name,
+        first_name: user.first_name,
+        last_name: user.last_name,
         email: user.email,
         gender: user.gender,
-        ip: user.ip_address
+        ip_address: user.ip_address
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
       const newUser: User = result;
       const resId = result.id;
       const index = _.findIndex(this.dataSource.data, {id: resId});
       // this.dataSource.data[index] = Object.assign(newUser);
       this.dataSource.data[index] = newUser;
-      console.log(this.dataSource.data);
+      this.refreshTable();
+      // console.log(this.dataSource.data);
     });
 
   }
+
+
+  private refreshTable() {
+    // if there's a paginator active we're using it for refresh
+    if (this.dataSource._paginator.hasNextPage()) {
+      this.dataSource._paginator.nextPage();
+      this.dataSource._paginator.previousPage();
+      // in case we're on last page this if will tick
+    } else if (this.dataSource._paginator.hasPreviousPage()) {
+      this.dataSource._paginator.previousPage();
+      this.dataSource._paginator.nextPage();
+      // in all other cases including active filter we do it like this
+    }
+  }
+
 }
 
 @Component({
