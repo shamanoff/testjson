@@ -4,6 +4,7 @@ import {FetchdataService} from '../fetchdata.service';
 import 'rxjs/add/operator/map';
 import {MatPaginator, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import * as _ from 'lodash';
+import index from '@angular/cli/lib/cli';
 
 
 @Component({
@@ -62,6 +63,13 @@ export class JsonworkComponent implements OnInit {
 
   }
 
+  deleteUser(id){
+    const index = _.findIndex(this.dataSource.data, {id: id});
+
+    this.dataSource.data.splice(index, 1);
+    this.refreshTable();
+
+  }
 
   private refreshTable() {
     // if there's a paginator active we're using it for refresh
