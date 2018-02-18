@@ -21,6 +21,7 @@ import { NewTrainingComponent } from './training/new-training/new-training.compo
 import { PastTrainingComponent } from './training/past-training/past-training.component';
 import { TrainingComponent } from './training/training/training.component';
 import {StopTrainingComponent} from "./training/current-training/stop-training.component";
+import { AddComponent } from './add/add.component';
 const appRoutes: Routes = [
   {path: '', component: MatComponent},
   {path: 'json', component: JsonworkComponent},
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     NewTrainingComponent,
     PastTrainingComponent,
     TrainingComponent,
-    StopTrainingComponent
+    StopTrainingComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,
