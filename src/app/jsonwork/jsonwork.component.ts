@@ -13,7 +13,7 @@ import * as _ from 'lodash';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JsonworkComponent implements OnInit {
-  displayedColumns = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address'];
+  displayedColumns = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'actions'];
   private onEditUser: User;
   private dataSource;
 
