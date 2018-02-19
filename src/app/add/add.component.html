@@ -1,30 +1,38 @@
 <h1 mat-dialog-title >Add New User</h1>
+<form novalidate autocomplete="off"
+      (ngSubmit)="save(form)"
+      #form="ngForm">
 <mat-dialog-content>
   <div class="example-container">
+
     <!--
       <h4>Full Name: {{data.fName}} {{data.lName}}</h4>
       <p>Email: {{data.email}}</p>
       <p>Gender: {{data.gender}}</p>
       <p>IP: {{data.ip}}</p>-->
     <mat-form-field>
-      <input matInput [(ngModel)]="data.first_name">
+      <input matInput placeholder="First Name" name="first_name">
     </mat-form-field>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.last_name">
+      <input matInput placeholder="Last Name" name="last_name">
     </mat-form-field>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.email">
+      <input matInput placeholder="Email" name="email">
     </mat-form-field>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.gender">
+      <mat-select placeholder="Select" name="gender">
+        <mat-option value="men">Men</mat-option>
+        <mat-option value="woman">Woman</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.ip_address">
+      <input matInput placeholder="IP" name="ip_address">
     </mat-form-field>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button color="accent" (click)="onCloseConfirm()" [mat-dialog-close]="true">Save</button>
+  <button mat-button color="accent"  [mat-dialog-close]="true">Save</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
   <button mat-button [mat-dialog-close]="true">Close</button>
 </mat-dialog-actions>
+</form>

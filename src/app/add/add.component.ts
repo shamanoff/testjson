@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit {
+export class AddComponent  {
 
+  constructor(public dialogRef: MatDialogRef<AddComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  constructor() { }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  save(formData){
+    console.log('DATA: ', formData);
 
-  ngOnInit() {
   }
 
 }

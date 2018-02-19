@@ -60,7 +60,7 @@ const appRoutes: Routes = [
   ],
   providers: [FetchdataService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogDataExampleDialog, StopTrainingComponent],
+  entryComponents: [DialogDataExampleDialog, StopTrainingComponent, AddComponent],
 
 })
 export class AppModule { }

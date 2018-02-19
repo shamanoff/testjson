@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {MatPaginator, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import * as _ from 'lodash';
 import index from '@angular/cli/lib/cli';
+import {AddComponent} from "../add/add.component";
 
 
 @Component({
@@ -84,6 +85,19 @@ export class JsonworkComponent implements OnInit {
     }
   }
 
+
+  openDialog(): void {
+    let dialogRef = this._dialog.open(AddComponent, {
+      width: '250px',
+      // data: { }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(typeof result);
+      // this.animal = result;
+    });
+  }
 }
 
 @Component({
