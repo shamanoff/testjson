@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import {MatPaginator, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import * as _ from 'lodash';
 import index from '@angular/cli/lib/cli';
-import {AddComponent} from "../add/add.component";
+import {AddComponent} from '../add/add.component';
 
 
 @Component({
@@ -18,10 +18,11 @@ export class JsonworkComponent implements OnInit {
   displayedColumns = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'actions'];
   private onEditUser: User;
   private dataSource;
+  // private size: number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private _dataServ: FetchdataService, public _dialog: MatDialog) {
+  constructor(private _dataServ: FetchdataService, public _dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -61,15 +62,12 @@ export class JsonworkComponent implements OnInit {
       this.refreshTable();
       // console.log(this.dataSource.data);
     });
-
   }
 
-  deleteUser(id){
-    const index = _.findIndex(this.dataSource.data, {id: id});
-
+  deleteUser(id) {
+    let index = _.findIndex(this.dataSource.data, {id: id});
     this.dataSource.data.splice(index, 1);
     this.refreshTable();
-
   }
 
   private refreshTable() {
@@ -85,17 +83,17 @@ export class JsonworkComponent implements OnInit {
     }
   }
 
-
   openDialog(): void {
-    let dialogRef = this._dialog.open(AddComponent, {
+    const dialogRef = this._dialog.open(AddComponent, {
       width: '250px',
-      // data: { }
+      // data: { user: user}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(typeof result);
-      // this.animal = result;
+      // console.log(JSON.stringify(result));
+      this.dataSource.data.unshift(result);
+      console.log(this.dataSource.data);
+      this.refreshTable();
     });
   }
 }
