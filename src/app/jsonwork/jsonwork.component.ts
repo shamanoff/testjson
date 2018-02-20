@@ -94,7 +94,8 @@ export class JsonworkComponent implements OnInit {
       this.dataSource.data.unshift(result);
       this.dataSource._updatePaginator(this.dataSource.data.length);
       console.log(this.dataSource.data);
-      this.refreshTable();
+      this.dataSource._updateChangeSubscription();
+      // this.refreshTable();
     });
   }
 }
