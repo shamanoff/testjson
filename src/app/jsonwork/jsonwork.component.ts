@@ -92,6 +92,7 @@ export class JsonworkComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // console.log(JSON.stringify(result));
       this.dataSource.data.unshift(result);
+      this.dataSource._updatePaginator(this.dataSource.data.length);
       console.log(this.dataSource.data);
       this.refreshTable();
     });
